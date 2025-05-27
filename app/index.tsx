@@ -5,16 +5,16 @@ import { Stack } from "expo-router";
 export default function App() {
 
     const eventHandler = () => {
-        alert("This is our lab2.");
+        alert("I am done with the lab.");
     }
 
-  return (
-    <View style={styles.container}>
-      <Text>Welcome to our lab2!</Text>
-      <Pressable onPress={eventHandler} style={styles.button}><Text>Press it</Text></Pressable>
-      <StatusBar style="auto" />
-    </View>
-  );
+    return (
+        <View style={styles.container}>
+        <Text>Welcome to our lab2!</Text>
+        <Pressable onPress={eventHandler} style={styles.button}><Text>Press it</Text></Pressable>
+        <StatusBar style="auto" />
+        </View>
+    );
 }
 
 const styles = StyleSheet.create({
