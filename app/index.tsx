@@ -8,15 +8,6 @@ export default function Index() {
         alert("I am done with the lab.");
     }
 
-<<<<<<< Updated upstream
-    return (
-        <View style={styles.container}>
-        <Text>Welcome to our lab2!</Text>
-        <Pressable onPress={eventHandler} style={styles.button}><Text>Press it</Text></Pressable>
-        <StatusBar style="auto" />
-        </View>
-    );
-=======
   return (
     <View style={styles.container}>
       <Text>Welcome to our lab2!</Text>
@@ -25,7 +16,6 @@ export default function Index() {
       <StatusBar style="auto" />
     </View>
   );
->>>>>>> Stashed changes
 }
 
 const styles = StyleSheet.create({
