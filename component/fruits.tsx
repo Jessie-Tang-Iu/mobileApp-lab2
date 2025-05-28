@@ -1,23 +1,42 @@
-import React, { use } from 'react';
-import { Text, TouchableOpacity } from 'react-native';
-import { Stack } from 'expo-router';
+import React from 'react';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { useRouter } from 'expo-router';
 
 const fruitList = [
     {id: 1, name: "apple"},
     {id: 2, name: "mango"}, 
-    {id: 3, name: "orange"}]
+    {id: 3, name: "orange"},
+]
 
-const router = Stack();
+const Fruits = () => {
+    const router = useRouter();
 
-const Fruits = () => 
-    fruitList.map((fruit) => 
-    <TouchableOpacity 
-        key={fruit.id}
-        onPress={() => router.push(`/${fruit.name}`)}>
-        <Text style={{ fontSize: 20, margin: 10 }}>
-            {fruit.name}
-        </Text>
-    </TouchableOpacity>);
-        
+    return (
+        <View style={{ padding: 20 }}>
+            {fruitList.map((fruit) => (
+            <TouchableOpacity style={styles.button}
+                key={fruit.id}
+                onPress={() => router.push(`../${fruit.name}`)}>
+                <Text>
+                {fruit.name}
+                </Text>
+            </TouchableOpacity>
+            ))}
+        </View>
+    );
+
+}
+
+const styles = StyleSheet.create({
+    button: {
+        backgroundColor: '#008CBA',
+        color: '#fff',
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 5,
+        fontSize: 16,
+        marginTop: 20,
+    },
+});        
 
 export default Fruits;

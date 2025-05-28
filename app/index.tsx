@@ -1,17 +1,18 @@
 import { StatusBar } from 'expo-status-bar';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
-import { Stack } from "expo-router";
+import Fruits from '../component/fruits';
 
-export default function App() {
+export default function Index() {
 
     const eventHandler = () => {
-        alert("This is our lab2.");
+        alert("I am done with the lab.");
     }
 
   return (
     <View style={styles.container}>
       <Text>Welcome to our lab2!</Text>
-      <Pressable onPress={eventHandler} style={styles.button}><Text>Press it</Text></Pressable>
+      <Fruits />
+      <Pressable onPress={eventHandler} style={styles.button}><Text>Finish Alert</Text></Pressable>
       <StatusBar style="auto" />
     </View>
   );
