@@ -1,13 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
-import { Stack } from "expo-router";
+import Fruits from '../component/fruits';
 
-export default function App() {
+export default function Index() {
 
     const eventHandler = () => {
         alert("I am done with the lab.");
     }
 
+<<<<<<< Updated upstream
     return (
         <View style={styles.container}>
         <Text>Welcome to our lab2!</Text>
@@ -15,6 +16,16 @@ export default function App() {
         <StatusBar style="auto" />
         </View>
     );
+=======
+  return (
+    <View style={styles.container}>
+      <Text>Welcome to our lab2!</Text>
+      <Fruits />
+      <Pressable onPress={eventHandler} style={styles.button}><Text>Finish Alert</Text></Pressable>
+      <StatusBar style="auto" />
+    </View>
+  );
+>>>>>>> Stashed changes
 }
 
 const styles = StyleSheet.create({
