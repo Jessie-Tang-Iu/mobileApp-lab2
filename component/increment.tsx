@@ -1,8 +1,8 @@
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
 interface IncrementProps {
- count: string,
- setCount: (count: string)=> null
+ count: number,
+ setCount: (count: number)=> void
 }
 
 export default function Increment( props: IncrementProps ) {
