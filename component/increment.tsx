@@ -23,12 +23,6 @@ export default function Increment( props: IncrementProps ) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   button: {
     backgroundColor: '#008CBA',
     color: '#fff',
