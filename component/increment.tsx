@@ -1,19 +1,20 @@
-"use client";
-
 import { useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import Increment from '../component/increment';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
 
-export default function Lab3() {
+export default function Increment( { count, setCount } ) {
 
-    const [count, setCount] = useState(0);
 
-    return (
-        <View style={styles.container}>
-            <Text>This is lab3</Text>
-            <Text>Count: {count}</Text>
-            <Increment count={count} setCount={setCount} />
+    const incrementHandler = () => {
+        setCount(count+1);
+    }
+
+    return(
+        <View>
+            <TouchableOpacity style={styles.button}
+             onPress={incrementHandler}>
+                <Text>increment</Text>
+            </TouchableOpacity>
         </View>
     );
 }
