@@ -4,7 +4,7 @@ import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
 interface ButtonProps {
     count: number;
-    setCount: (count: number) => null;
+    setCount: (count: number) => void;
 }
 
 const DecrementButton = (props: ButtonProps) => {
