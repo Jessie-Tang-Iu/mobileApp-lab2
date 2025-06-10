@@ -1,11 +1,17 @@
+"use client";
+
+import { useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 
 export default function Lab3() {
 
+    const [count, setCount] = useState(0);
+
     return (
         <View>
             <Text>This is lab3</Text>
+            <Text>Count: {count}</Text>
         </View>
     );
 }
