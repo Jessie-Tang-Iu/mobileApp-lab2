@@ -1,19 +1,22 @@
-import { StatusBar } from 'expo-status-bar';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
-import Fruits from '../component/fruits';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { useRouter } from 'expo-router';
 
 export default function Index() {
 
-    const eventHandler = () => {
-        alert("I am done with the lab.");
-    }
+  const router = useRouter();
 
   return (
     <View style={styles.container}>
-      <Text>Welcome to our lab2!</Text>
-      <Fruits />
-      <Pressable onPress={eventHandler} style={styles.button}><Text>Finish Alert</Text></Pressable>
-      <StatusBar style="auto" />
+      <TouchableOpacity style={styles.button} onPress={() => router.push(`../lab2`)}>
+        <Text>
+        Lab 2
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.button} onPress={() => router.push(`../lab3`)}>
+        <Text>
+        Lab 3
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 }
