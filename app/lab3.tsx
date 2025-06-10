@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Increment from '../component/increment';
+import DecrementButton from '../component/decrement';
 
 
 export default function Lab3() {
@@ -14,6 +15,7 @@ export default function Lab3() {
             <Text>This is lab3</Text>
             <Text>Count: {count}</Text>
             <Increment count={count} setCount={setCount} />
+            <DecrementButton count={count} setCount={setCount} />
         </View>
     );
 }
