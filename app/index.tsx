@@ -17,6 +17,11 @@ export default function Index() {
         Lab 3
         </Text>
       </TouchableOpacity>
+      <TouchableOpacity style={styles.button} onPress={() => router.push(`../lab4`)}>
+        <Text>
+        Lab 4
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 }
