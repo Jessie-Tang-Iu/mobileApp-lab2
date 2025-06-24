@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, TouchableOpacity, FlatList } from 'react-native';
 import vacationsDestinations, { VacationDestination } from '../lib/vacationsDestinations';
 import { useEffect, useState } from 'react';
+import ApiCallCity from '../component/api_call_city';
 
 
 export default function lab4() {
@@ -15,9 +16,11 @@ export default function lab4() {
     <View>
       <TouchableOpacity onPress={() => toggleDetails(item.id)} style={styles.button}>
         <Text style={styles.title}>{item.location}</Text>
+        
       </TouchableOpacity>
       {selectedId === item.id && (
         <View style={styles.details}>
+          <ApiCallCity city={item.location} />
           <Text>Price: ${item.price}</Text>
           <Text>Average Yearly Temperature: {item.average_yearly_temperature}</Text>
         </View>

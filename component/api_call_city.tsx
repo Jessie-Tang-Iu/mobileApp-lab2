@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, StyleSheet, Button, ScrollView, TextInput, Pressable, Image } from "react-native";
+import { View, Text, Image } from "react-native";
 
 const ApiCallCity: React.FC<{ city: string }> = ({ city }) => {
 
