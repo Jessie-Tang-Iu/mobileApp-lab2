@@ -1,20 +1,28 @@
 import { StyleSheet, Text, View, TouchableOpacity, FlatList, ActivityIndicator } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
-import { supabase } from '../lib/supabase'; // Adjust path as needed
+import { supabase } from '../lib/supabase';
+
+// Define a User type based on your Supabase "users" table
+type User = {
+  id: number;
+  first_name: string;
+  last_name: string;
+  email: string;
+};
 
 export default function Lab5() {
   const router = useRouter();
-  const [users, setUsers] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [users, setUsers] = useState<User[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   const fetchUsers = async () => {
     setLoading(true);
-    const { data, error } = await supabase.from('users').select('*');
+    const { data, error } = await supabase.from<User>('users').select('*');
     if (error) {
       console.error('Error fetching users:', error.message);
     } else {
-      setUsers(data);
+      setUsers(data || []);
     }
     setLoading(false);
   };
@@ -23,9 +31,9 @@ export default function Lab5() {
     fetchUsers();
   }, []);
 
-  const renderItem = ({ item }) => (
+  const renderUser = ({ item }: { item: User }) => (
     <View style={styles.userItem}>
-      <Text>{item.name} ({item.email})</Text>
+      <Text>{item.first_name} {item.last_name} ({item.email})</Text>
     </View>
   );
 
@@ -36,10 +44,10 @@ export default function Lab5() {
       {loading ? (
         <ActivityIndicator size="large" color="#0000ff" />
       ) : (
-        <FlatList
+        <FlatList<User>
           data={users}
           keyExtractor={(item) => item.id.toString()}
-          renderItem={renderItem}
+          renderItem={renderUser}
         />
       )}
 
