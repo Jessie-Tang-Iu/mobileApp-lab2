@@ -1,7 +1,8 @@
-import { StyleSheet, Text, View, TouchableOpacity, FlatList, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, FlatList, ActivityIndicator, Alert } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { supabase } from '../lib/supabase';
+import { deleteUser, updateUser } from '../lib/supabase_crud';
 
 // Define a User type based on your Supabase "users" table
 type User = {
@@ -31,9 +32,59 @@ export default function Lab5() {
     fetchUsers();
   }, []);
 
+  const handleDelete = (userId: number, userName: string) => {
+    Alert.alert(
+      'Confirm Delete',
+      `Are you sure you want to delete ${userName}?`,
+      [
+        { text: 'Cancel', style: 'cancel' },
+        { 
+          text: 'Delete', 
+          style: 'destructive', 
+          onPress: async () => {
+            try {
+              await deleteUser(userId);
+              fetchUsers();
+            } catch (error) {
+              Alert.alert('Error', 'Failed to delete user.');
+              console.error(error);
+            }
+          } 
+        }
+      ]
+    );
+  };
+
+  const handleUpdate = async (user: User) => {
+    // Example inline update: append "(Updated)" to first_name
+    try {
+      await updateUser(user.id, { ...user, first_name: user.first_name + " (Updated)" });
+      fetchUsers();
+    } catch (error) {
+      Alert.alert('Error', 'Failed to update user.');
+      console.error(error);
+    }
+  };
+
   const renderUser = ({ item }: { item: User }) => (
     <View style={styles.userItem}>
       <Text>{item.first_name} {item.last_name} ({item.email})</Text>
+
+      <View style={{ flexDirection: 'row', marginTop: 5 }}>
+        <TouchableOpacity 
+          style={[styles.smallButton, {backgroundColor: '#4CAF50'}]} 
+          onPress={() => handleUpdate(item)}
+        >
+          <Text style={styles.smallButtonText}>Update</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity 
+          style={[styles.smallButton, {backgroundColor: '#f44336', marginLeft: 10}]} 
+          onPress={() => handleDelete(item.id, `${item.first_name} ${item.last_name}`)}
+        >
+          <Text style={styles.smallButtonText}>Delete</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 
@@ -87,4 +138,13 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 16,
   },
+  smallButton: {
+    paddingVertical: 5,
+    paddingHorizontal: 10,
+    borderRadius: 4,
+  },
+  smallButtonText: {
+    color: '#fff',
+    fontSize: 14,
+  }
 });
