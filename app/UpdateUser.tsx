@@ -29,8 +29,10 @@ export default function UpdateUser() {
         email: emailValue,
         };
     
-        const updated = await updateUser(Number(id), updatedUser);
-        Alert.alert('Success', `User ${updated[0].first_name} updated!`);
+        const updated: any = await updateUser(Number(id), updatedUser);
+        console.log("Update user:", updatedUser);
+        console.log("Existing", existingUser);
+        Alert.alert('Success', `User ${updated? updated[0].first_name: ""} updated!`);
         router.push('../lab5');
     } catch (error) {
         Alert.alert('Error', 'Could not update user.');
@@ -46,7 +48,7 @@ export default function UpdateUser() {
             <Text style={styles.label}>Enter Last Name:</Text>
             <TextInput
                 style={styles.input}
-                value={lastName}
+                value={lastName ? lastName : ''}
                 onChangeText={setLastName}
                 placeholder="Type here"
                 keyboardType="default"
@@ -54,7 +56,7 @@ export default function UpdateUser() {
             <Text style={styles.label}>Enter First Name:</Text>
             <TextInput
                 style={styles.input}
-                value={firstName}
+                value={firstName ? firstName : ''}
                 onChangeText={setFirstName}
                 placeholder="Type here"
                 keyboardType="default"
@@ -62,7 +64,7 @@ export default function UpdateUser() {
             <Text style={styles.label}>Enter Phone Number:</Text>
             <TextInput
                 style={styles.input}
-                value={phoneValue}
+                value={phoneValue ? phoneValue : ''}
                 onChangeText={setPhone}
                 placeholder="Type here"
                 keyboardType="default"
@@ -70,7 +72,7 @@ export default function UpdateUser() {
             <Text style={styles.label}>Enter Email:</Text>
             <TextInput
                 style={styles.input}
-                value={emailValue}
+                value={emailValue ? emailValue : ''}
                 onChangeText={setEmail}
                 placeholder="Type here"
                 keyboardType="default"
