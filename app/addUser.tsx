@@ -1,21 +1,12 @@
 import { StyleSheet, Text, View, TouchableOpacity, FlatList } from 'react-native';
-import { useRouter } from 'expo-router';
 
 
-export default function lab5() {
-
-    const router = useRouter();
-
+export default function addUser() {
     return(
         <View style={styles.container}>
-            <Text>This is Lab 5</Text>
-            <TouchableOpacity style={styles.button} onPress={() => router.push(`../addUser`)}>
-                <Text>
-                Add User
-                </Text>
-            </TouchableOpacity>
+            <Text>Add user here</Text>
         </View>
-    )
+    );
 }
 
 const styles = StyleSheet.create({
