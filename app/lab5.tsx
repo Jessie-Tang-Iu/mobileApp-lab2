@@ -73,7 +73,7 @@ export default function Lab5() {
       <View style={{ flexDirection: 'row', marginTop: 5 }}>
         <TouchableOpacity 
           style={[styles.smallButton, {backgroundColor: '#4CAF50'}]} 
-          onPress={() => handleUpdate(item)}
+          onPress={() => router.push({ pathname: '/UpdateUser', params: item })}
         >
           <Text style={styles.smallButtonText}>Update</Text>
         </TouchableOpacity>
